@@ -1,2 +1,5 @@
+raylib/
 *.o
-dino
+*.a
+*.out
+raylib_test
