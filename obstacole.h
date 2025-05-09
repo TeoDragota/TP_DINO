@@ -2,8 +2,21 @@
 #define OBSTACOLE_H
 
 #include "globals.h"
+#include <stdbool.h>
 
-extern float obstacleX, obstacleY, obstacleWidth, obstacleHeight;
+#define MAX_OBSTACOLE 2
+
+typedef struct {
+    float x, y, width, height, speed;
+    int type;       // tipul obstacolului
+    bool active;
+} Obstacol;
+
+extern Obstacol obstacole[MAX_OBSTACOLE];
+
+void initObstacole();
+void updateObstacole();
+void drawObstacole();
 
 void initObstacol();
 void updateObstacol();
