@@ -4,7 +4,7 @@
 float dinoX = 100, dinoY = 400, dinoSize = 40;
 bool isJumping = false;
 float jumpSpeed = 0;
-const float gravity = 0.5;
+const float gravity = 0.65;
 int dinoSkin = 0;
 
 void initDino() {

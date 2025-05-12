@@ -27,9 +27,19 @@ void initObstacole() {
 }
 
 void updateObstacole() {
+
+        float speed = 3.0;
+
+    if (score >= 12) speed = 3.6;
+    else if (score >= 10) speed = 3.55;
+    else if (score >= 8)  speed = 3.5;
+    else if (score >= 6)  speed = 3.20;
+    else if (score >= 4)  speed = 3.10;
     for (int i = 0; i < MAX_OBSTACOLE; i++) {
         if (obstacole[i].active) {
             obstacole[i].x -= obstacole[i].speed;
+            obstacole[i].speed = speed;
+obstacole[i].x -= obstacole[i].speed;
 
             if (obstacole[i].x + obstacole[i].width < 0) {
                 obstacole[i].x = screenWidth + GetRandomValue(0, 300);
