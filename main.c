@@ -4,6 +4,9 @@
 #include "globals.h"
 #include <stdio.h>
 
+Texture2D bgAsh, bgAsteroid, bgCretacic, bgJurasic, bgTriasic, bgFinal, bgWinter;
+
+
 int screenWidth = 800;
 int screenHeight = 450;
 int score = 0;
@@ -29,6 +32,14 @@ int main() {
     loadHighScore();
 
     InitWindow(screenWidth, screenHeight, "TP_DINO");
+    bgAsh = LoadTexture("assets/ash.png");
+    bgAsteroid = LoadTexture("assets/asteroid.jpeg");
+    bgCretacic = LoadTexture("assets/cretacic.jpeg");
+    bgFinal = LoadTexture("assets/final.png");
+    bgJurasic = LoadTexture("assets/jurasic.jpeg");
+    bgTriasic = LoadTexture("assets/triasic.jpeg");
+    bgWinter = LoadTexture("assets/winter.jpeg");
+
     SetTargetFPS(60);
 
     initDino();
@@ -60,7 +71,44 @@ int main() {
 
         // DRAW
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        Texture2D currentBG = bgTriasic;
+
+/**if (score >= 50) {
+    currentBG = bgNowhere;
+} else if (score >= 40) {
+    currentBG = bgToxic;
+} else if (score >= 30) {
+    currentBG = bgMilitary;
+} else if (score >= 20) {
+    currentBG = bgNight;
+} else if (score >= 10) {
+    currentBG = bgComming;
+}*/
+
+if (score >=12)
+    {currentBG = bgFinal;}
+else if (score >= 10) {
+    currentBG = bgWinter;
+} else if (score >= 8) {
+    currentBG = bgAsh;
+} else if (score >= 6) {
+    currentBG = bgAsteroid;
+} else if (score >= 4) {
+    currentBG = bgCretacic;
+} else if (score >= 2) {
+    currentBG = bgJurasic;
+}
+
+DrawTexturePro(
+    currentBG,
+    (Rectangle){ 0, 0, currentBG.width, currentBG.height },
+    (Rectangle){ 0, 0, screenWidth, screenHeight },
+    (Vector2){ 0, 0 },
+    0.0f,
+    WHITE
+);
+
+
 
         drawDino();
         drawObstacole();
@@ -92,5 +140,12 @@ int main() {
     }
 
     CloseWindow();
+    UnloadTexture(bgFinal);
+UnloadTexture(bgWinter);
+UnloadTexture(bgAsh);
+UnloadTexture(bgJurasic);
+UnloadTexture(bgCretacic);
+UnloadTexture(bgTriasic);
+UnloadTexture(bgAsteroid);
     return 0;
 }
