@@ -41,10 +41,31 @@ void updateObstacole() {
 
 void drawObstacole() {
     for (int i = 0; i < MAX_OBSTACOLE; i++) {
-        if (obstacole[i].active) {
-            Color color = (obstacole[i].type == 0) ? DARKBROWN : MAROON;
-            DrawRectangle(obstacole[i].x, obstacole[i].y, obstacole[i].width, obstacole[i].height, color);
-            
-        }
+        Color color;
+
+    if (obstacole[i].type == 0) {
+        // Tip 0 — dreptunghi
+        if (score >= 12) color = LIME;
+        else if (score >= 10) color = DARKBLUE;
+        else if (score >= 8) color = GREEN;
+        else if (score >= 6) color = DARKBROWN;
+        else if (score >= 4) color = DARKGREEN;
+        else if (score >= 2) color = BROWN;
+        else color = DARKBROWN;
+    } else {
+        // Tip 1 — cub {
+        if (score >= 12) color = (Color) {100, 0, 200, 255 }; //indigo
+        else if (score >= 10) color = (Color){ 100, 100, 255, 255 };  // albastru închis
+        else if (score >= 8) color = (Color){ 204, 153, 0, 255 }; //galben mustar
+        else if (score >= 6) color = (Color){ 255, 150, 0, 255 }; //galben
+        else if (score >= 4) color = DARKGRAY;
+        else if (score >= 2) color = (Color){ 150, 150, 255, 255 }; //lila
+        else color =  MAROON;
     }
+   
+
+    DrawRectangle(obstacole[i].x, obstacole[i].y,
+                  obstacole[i].width, obstacole[i].height,
+                  color);
+}
 }

@@ -6,6 +6,8 @@
 extern float dinoX, dinoY, dinoSize;
 extern bool isJumping;
 extern float jumpSpeed;
+extern int dinoSkin;
+
 
 void initDino();
 void updateDino();
